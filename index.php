@@ -1,7 +1,7 @@
 <?php
 // 関連ファイルのインポート
-require_once('./Message.php')
-require_once('./env.php')
+require_once('./Message.php');
+require_once('./env.php');
 
 if($_SERVER['REQUEST_METHOD']==='POST'){
 // POSTリクエスト時の処理
@@ -14,7 +14,7 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
     $pdo = new PDO(DSN, DB_USER, DB_PASS);
     $mags = $pdo->query(
       "SELECT * FROM message ORDER BY id DESc"
-    )
+    );
 
     // Messageオブジェクトに格納、配列に追加
     foreach ($mags as $mag) {

@@ -1,7 +1,7 @@
 <?php
 // 関連ファイルのインポート
-require_once('./Message.php');
-require_once('./env.php');
+require_once ('./Message.php');
+require_once ('./env.php');
 
 if($_SERVER['REQUEST_METHOD']==='POST'){
 // POSTリクエスト時の処理

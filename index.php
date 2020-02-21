@@ -20,6 +20,7 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
     foreach ($mags as $mag) {
       $message = new Message($mag['user_name'],$mag['user_email'],$mag['main'],$mag['created_at']);
       array_push($message_list,$message);
+      echo "push done";
     }
   }catch(PDOEXception $e){
     print("DBに接続できませんでした");

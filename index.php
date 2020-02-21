@@ -1,12 +1,31 @@
 <?php
 // 関連ファイルのインポート
-require_once('./')
+require_once('./message.php')
+require_once('./env.php')
+
 if($_SERVER['REQUEST_METHOD']==='POST'){
 // POSTリクエスト時の処理
 }else{
 // GETリクエスト時の処理
-}
+  // 一覧表示用の配列を宣言
+  $message_list = array();
+  try {
+    // DBにアクセスして登録済データを投稿の新しい順に取得
+    $pdo = new PDO(DSN, DB_USER, DB_PASS);
+    $mags = $pdo->query(
+      "SELECT * FROM message ORDER BY id DESc"
+    )
 
+    // Messageオブジェクトに格納、配列に追加
+    foreach ($mags as $mag) {
+      $message = new Message($mag['user_name'],$mag['user_email'],$mag['main'],$mag['createrd_at']);
+      array_push($message_list,$message);
+    }
+  }catch(PDOEXception){
+    print("DBに接続できませんでした");
+    die();
+  }
+}
 
 ?>
 <!doctype html>

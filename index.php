@@ -5,6 +5,28 @@ require_once ('./env.php');
 
 if($_SERVER['REQUEST_METHOD']==='POST'){
 // POSTリクエスト時の処理
+// POSTされたデータを取得
+$user_name = htmlspecialchars($_POST['user_name']);
+$user_email = htmlspecialchars($_POST['user_email']);
+$main = htmlspecialchars($_POST['main']);
+// データのチェック（バリデーション）
+
+// データベースに登録
+try {
+  $pdo = new PDO(DSN, DB_USER, DB_PASS);
+  $sql = 'insert into messages(user_name, user_email, main, created_at) values(:user_name, :user_email, :main, now())';
+  $stmt = $pdo->prepare($sql);
+  $stmt->bindValue(':user_name', $user_name, PDO::PARAM_STR);
+  $stmt->bindValue(':user_email', $user_email, PDO::PARAM_STR);
+  $stmt->bindValue(':main', $main, PDO::PARAM_STR);
+  $stmt->execute();
+}catch(PDOEXception $e){
+  print("DBに接続できませんでした");
+  die();
+}
+// リダイレクト
+  header('Location:'.$_SERVER['SCRIPT_NAME']);
+  exit();
 }else{
 // GETリクエスト時の処理
   // 一覧表示用の配列を宣言

@@ -1,5 +1,11 @@
 <?php
-if($_SERVER['REQUEST_METHOD']==='POST')
+// 関連ファイルのインポート
+require_once('./')
+if($_SERVER['REQUEST_METHOD']==='POST'){
+// POSTリクエスト時の処理
+}else{
+// GETリクエスト時の処理
+}
 
 
 ?>

@@ -1,8 +1,8 @@
 #DB定義
-drop database if exists bbs;
-create database bbs default charset utf8;
+drop database if exists bbsabiru;
+create database bbsabiru default charset utf8;
 
-use bbs;
+use bbsabiru;
 
 #TABLE定義
 create table messages (
@@ -18,4 +18,4 @@ insert into messages(user_name, user_email, main, created_at) values('貞夫','s
 insert into messages(user_name, user_email, main, created_at) values('貞夫','sadao@gmail.com','投稿テスト２',now());
 
 #アクセス権設定
-grant all on bbs.* to 'dbuser'@'%' identified by 'passwd';
+grant all on bbsabiru.* to 'abiru'@'localhost' identified by 'root';

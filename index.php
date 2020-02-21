@@ -73,6 +73,7 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
         <div class="alert alert-primary" role="alert">
            <p>投稿内容<?=$message->get_main() ?></p>
            <p class="text-right"><?=$message->get_user_name() ?> (<?=$mesaage->get_created_at() ?> )投稿者</p>
+           
         </div>
       <?php } ?>  
     </div>

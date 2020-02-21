@@ -13,7 +13,7 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
     // DBにアクセスして登録済データを投稿の新しい順に取得
     $pdo = new PDO(DSN, DB_USER, DB_PASS);
     $mags = $pdo->query(
-      "SELECT * FROM message ORDER BY id DESC"
+      "SELECT * FROM messages ORDER BY id DESC"
     );
 
     // Messageオブジェクトに格納、配列に追加

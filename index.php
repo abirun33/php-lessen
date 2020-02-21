@@ -67,6 +67,7 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
      <!--表示部分-->  
     <div class="container">
       <?php
+      echo count($message_list);
       foreach ($message_list as $message) { ?>
         <div class="alert alert-primary" role="alert">
            <p>投稿内容<?=$message->get_main() ?></p>
